@@ -1,0 +1,45 @@
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse
+      .navbar-inner
+        %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{:href => root_path, :style => "background-color: transparent;"}
+          IoT Connect 
+        - if current_user
+          - if current_user.name            
+            .navbar-text.pull-right{:style => "margin-right: 10px;"} Logged in as  <a href='#{user_path(current_user)}' style="background-color: inherit; color: inherit; ">#{current_user.name}</a>  
+        .nav-collapse.collapse                                                     
+          %ul.nav
+            - if user_signed_in?
+              %li= link_to "Add+", new_project_path                     
+              %li= link_to "Edit profile", edit_user_registration_path                
+              %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+            - else
+              %li= link_to "Log in", new_user_session_path
+              %li= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook)                 
+    
+#myCarousel.carousel.slide
+  .carousel-inner
+    .item.active
+      = image_tag('66EDx900y900.jpg')
+      .container            
+        .carousel-captionp
+          %h1  What if your fridge could give you the weather forecast? 
+          %a.btn.btn-large.btn-primary{:href => new_user_registration_path} Sign up today
+    .item
+      = image_tag('Fotolia_3514050_S.jpg')
+      .container            
+        .carousel-captionp
+          %h1 What if your Rubik’s cube could  tell your neighbour’s high score ? Connected devices will soon be everywhere and change your life. 
+          %a.btn.btn-large.btn-primary{:href => about_path} About us
+    .item
+      = image_tag('tumblr_m1r8ytkQmv1r6d115o1_1280-588x373.jpg')
+      .container            
+        .carousel-captionp
+          %h1 Join the movement by sharing your ideas, starting your own project or buying the latest connected devices!
+          %a.btn.btn-large.btn-primary{:href => root_path} Join us
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"} ‹
+  %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"} ›

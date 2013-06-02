@@ -1,0 +1,24 @@
+= render 'pages/home'
+
+.tabbables
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#tab1"} 
+        %strong
+          %h4 Projects
+    %li
+      %a{"data-toggle" => "tab", :href => "#tab2"} 
+        %strong
+          %h4 Products
+  .tab-content
+    #tab1.tab-pane.active
+      #projects
+      - if @projects
+        = render @projects
+      = will_paginate @projects    
+    #tab2.tab-pane
+      #projects
+      - if @products
+        = render @products
+      = will_paginate @products
+

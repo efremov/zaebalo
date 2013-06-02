@@ -1,0 +1,4 @@
+class AddStageToProjects < ActiveRecord::Migration
+  def change
+  end
+end

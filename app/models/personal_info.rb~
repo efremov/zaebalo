@@ -1,0 +1,4 @@
+class PersonalInfo < ActiveRecord::Base
+   attr_accessible :name, :surname, :age, :country, :about, :user_id, :image
+   belongs_to :user
+end

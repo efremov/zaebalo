@@ -1,0 +1,160 @@
+.row-fluid
+  .span4
+    -if @user      
+      .box{:style => "width: 95% ;"}
+        %em
+          %h3  
+            - if @user.identity
+              #{@user.identity.titleize}
+            - unless
+              User
+        %ul.thumbnails
+          %li.span12
+            - if @personal_info 
+              - if @personal_info.image
+                .thumbnail
+                  .img-polaroid
+                    = image_tag @personal_info.image   
+              %dl.dl-horizontal
+                - unless @personal_info.name == ""
+                  %dt{:style => 'text-align: left;'} Name:
+                  %dd{:style => 'text-align: right;'}= @personal_info.name
+                - unless @personal_info.surname == ""
+                  %dt{:style => 'text-align: left;'} Surname:
+                  %dd{:style => 'text-align: right;'}= @personal_info.surname
+                - unless @personal_info.age == nil
+                  %dt{:style => 'text-align: left;'} Age:
+                  %dd{:style => 'text-align: right;'}= @personal_info.age
+                - unless @personal_info.country == ""
+                  %dt{:style => 'text-align: left;'} Country:
+                  %dd{:style => 'text-align: right;'}= @personal_info.country
+                - unless @personal_info.about == ""
+                  %dt{:style => 'text-align: left;'} Whatever about you:
+                  %dd{:style => 'text-align: right;'}= @personal_info.about
+ 
+        - if current_user == @user
+          - if @personal_info
+            .btn-group
+              .btn.btn-primary
+                %a{:href =>"#{edit_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Edit 
+          - else
+            .btn.btn-primary
+              %a{:href =>"#{new_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Add personall info
+          .btn.btn-primary
+            %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Back
+        
+  .span8
+    .tabbables.tabs-right
+      - if @user.identity == 'maker'
+        %ul.nav.nav-tabs        
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab1"} 
+              Projects
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab2"}
+              - if @user == current_user
+                Interesting projects
+              - else
+                Products
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab3"} 
+              Friends
+          %li
+            .btn.btn-primary
+              %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
+        .tab-content
+          #tab1.tab-pane.active
+            %em
+              %h4 #{@user.name.titleize}'s projects:
+            .user_projects
+              = render @projects
+            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
+          - if @user == current_user
+            #tab2.tab-pane
+              %em
+                %h4 Projects that may be interesting to #{@user.name.titleize}:
+              .favorite_projects          
+                = render @favorite_projects
+              = link_to 'Loading more projects', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page
+          - else
+            #tab2.tab-pane
+              %em
+                %h4 #{@user.name.titleize}'s products:
+              .products          
+                = render @favorite_projects
+              = link_to 'Loading more products', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page
+          #tab3.tab-pane
+            %em
+              %h4 #{@user.name.titleize}'s friends/teammates/colleagues:
+      - if @user.identity == 'partner'    
+        %ul.nav.nav-tabs        
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab1"} 
+              Offer
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab2"}
+              - if @user == current_user
+                Potential client's
+              - else
+                Clients
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab3"} 
+              Reviews of the partner
+          %li
+            .btn.btn-primary
+              %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
+        .tab-content
+          #tab1.tab-pane.active
+            %em
+              %h4 #{@user.name.titleize}'s offers:
+            .user_offers
+              = render @projects
+            = link_to 'Loading more offers', user_path(current_user, :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
+          - if @user == current_user
+            #tab2.tab-pane
+              %em
+                %h4 #{@user.name.titleize} clients:
+              .clients         
+                = render @favorite_projects
+              = link_to 'Loading more clients', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page
+          - else
+            #tab2.tab-pane
+              %em
+                %h4 Makers that may be interested in your offer:
+              .potential_clients          
+                = render @favorite_projects
+              = link_to 'Loading more products', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page
+          #tab3.tab-pane
+            %em
+              %h4 Reviews of #{@user.name.titleize}'s
+      - if @user.identity == 'user'    
+        %ul.nav.nav-tabs        
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab1"} 
+              Trending projects and products 
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab2"}
+              Last comments
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab3"} 
+              Friends
+          %li
+            .btn.btn-primary
+              %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
+        .tab-content
+          #tab1.tab-pane.active
+            %em
+              %h4 Trending products:
+            .trending_projects
+              = render @trending_projects
+            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
+          #tab2.tab-pane
+            %em
+              %h4 #{@user.name.titleize}'s comments:
+            .comments        
+              = render @favorite_projects
+            = link_to 'Loading more clients', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page 
+          #tab3.tab-pane
+            %em
+              %h4 #{@user.name.titleize}'s friends
+
