@@ -13,6 +13,7 @@
             .navbar-text.pull-right{:style => "margin-right: 10px;"} Logged in as  <a href='#{user_path(current_user)}' style="background-color: inherit; color: inherit; ">#{current_user.name}</a>  
         .nav-collapse.collapse                                                     
           %ul.nav
+            %li= link_to "About", about_path
             - if user_signed_in?
               %li= link_to "Add+", new_project_path                     
               %li= link_to "Edit profile", edit_user_registration_path                
@@ -20,7 +21,7 @@
             - else
               %li= link_to "Log in", new_user_session_path
               %li= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook)                 
-    
+    d
 #myCarousel.carousel.slide
   .carousel-inner
     .item.active
