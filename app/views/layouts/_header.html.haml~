@@ -36,7 +36,7 @@
           %h1 What if your Rubik’s cube could  tell your neighbour’s high score ? Connected devices will soon be everywhere and change your life. 
           %a.btn.btn-large.btn-primary{:href => about_path} About us
     .item
-      = image_tag('internet-e1320366800225.jpg')
+      = image_tag('tumblr_m1r8ytkQmv1r6d115o1_1280-588x373.jpg')
       .container            
         .carousel-captionp
           %h1 Join the movement by sharing your ideas, starting your own project or buying the latest connected devices!
