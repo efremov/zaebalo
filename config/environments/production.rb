@@ -70,7 +70,7 @@ Stanfordiot::Application.configure do
 
 #Configuring Amazon S# for paperclip file upload
   config.paperclip_defaults = {
-  :url => ":s3_domain_url"
+  :url => ":s3_domain_url",
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['AWS_BUCKET'],
