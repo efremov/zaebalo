@@ -5,16 +5,17 @@ Stanfordiot::Application.routes.draw do
   get 'users/define_maker'
   get 'users/define_vendor'
   get 'users/define_user'
-
+  get 'friends/create'
+  get 'friends/destroy'
   resources :projects
   
-  
 
-  devise_for :users do
+  devise_for :users
+  resources :users do
     resources :personal_infos
   end
   
-  match 'users/:id' => 'users#show', as: :user
+  match 'users/:id' => 'users#show'
 
   get 'about' => 'pages#about'
 

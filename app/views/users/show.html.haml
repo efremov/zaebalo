@@ -31,17 +31,29 @@
                 - unless @personal_info.about == ""
                   %dt{:style => 'text-align: left;'} Whatever about you:
                   %dd{:style => 'text-align: right;'}= @personal_info.about
- 
-        - if current_user == @user
-          - if @personal_info
+        
+        - if @personal_info
+          - if current_user == @user
             .btn-group
               .btn.btn-primary
                 %a{:href =>"#{edit_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Edit 
           - else
             .btn.btn-primary
-              %a{:href =>"#{new_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Add personall info
-        .btn.btn-primary
-          %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Back 
+              %a{:href =>"#{root_path}", :style => "background-color: inherit; color: inherit"} Back
+            - if user_signed_in?
+              - if current_user.friends == [] 
+                .btn.btn-primary
+                  %a{:href =>"#{user_friends_create_path(@user)}", :style => "background-color: inherit; color: inherit"} Add to friends 
+              - else
+                - unless current_user.friends.where(friend_id: params[:user_id]).first 
+                  .btn.btn-primary
+                    %a{:href =>"#{user_friends_destroy_path(@user)}", :style => "background-color: inherit; color: inherit"} Delete from friends
+                - else
+                  .btn.btn-primary
+                    %a{:href =>"#{ user_friends_create_path(@user)}", :style => "background-color: inherit; color: inherit"} Add to friends 
+        - else
+          .btn.btn-primary
+            %a{:href =>"#{new_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Add personall info
         
   .span8
     .tabbables.tabs-right
@@ -86,6 +98,8 @@
           #tab3.tab-pane
             %em
               %h4 #{@user.name.titleize}'s friends/teammates/colleagues:
+              - @friends.each do |friend|
+                = render User.where(id: friend.friend_id).first               
       - if @user.identity == 'partner'    
         %ul.nav.nav-tabs        
           %li.active
@@ -157,4 +171,6 @@
           #tab3.tab-pane
             %em
               %h4 #{@user.name.titleize}'s friends
+               - @friends.each do |friend|
+                = render User.where(id: friend.friend_id).first
 

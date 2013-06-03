@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @personal_info = @user.personal_info
     @projects = @user.projects.page(params[:page]).per_page(10)
     @favorite_projects = @user.projects.page(params[:page]).per_page(10)
+    @friends = @user.friends
     respond_to do |format|
       format.html # show.html.er
       format.json { render json: @user }

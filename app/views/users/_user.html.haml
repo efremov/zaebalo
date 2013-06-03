@@ -1,0 +1,11 @@
+.box
+  - if user.personal_info.image
+    = link_to (image_tag user.personal_info.image(:medium)), user
+  %p.description
+    = user.name
+  %p
+    %strong
+      - if user.identity
+        = user.identity
+      %br
+      Rating: #{user.rate}
