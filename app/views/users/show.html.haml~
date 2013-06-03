@@ -40,8 +40,15 @@
           - else
             .btn.btn-primary
               %a{:href =>"#{new_user_personal_info_path(current_user, @personal_info)}", :style => "background-color: inherit; color: inherit"} Add personall info
-          .btn.btn-primary
-            %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Back
+        .btn.btn-primary
+          %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Back
+        - if current_user.friends 
+          - if current_user.friends.find(friend_id: params[:user_id])
+            .btn.btn-primary
+              %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Delete from friends
+          - else
+            .btn.btn-primary
+              %a{:href =>"#{users_path}", :style => "background-color: inherit; color: inherit"} Add to friends 
         
   .span8
     .tabbables.tabs-right

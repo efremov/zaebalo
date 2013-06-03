@@ -1,0 +1,10 @@
+class FriendsController < ApplicationController
+
+  def create
+    @friend = current_user.create_friend(friend_id: params[:user_id])
+  end
+                                        
+  def destroy
+    @friend = Friend.where(user_id: current_user.id, friend_id: params[:user_id])
+
+end
