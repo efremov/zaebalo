@@ -14,5 +14,6 @@ class FriendsController < ApplicationController
     @friend.destroy
     respond_to do |format|
       format.html { redirect_to user_path(@user)}
-    end          
+    end   
+  end
 end
