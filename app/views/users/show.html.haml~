@@ -6,8 +6,8 @@
           %h3  
             - if @user.identity
               #{@user.identity.titleize}
-            - unless
-              User
+            - else
+              Customer
         %ul.thumbnails
           %li.span12
             - if @personal_info 
@@ -93,7 +93,7 @@
               %em
                 %h4 #{@user.name.titleize}'s products:
               .products          
-                = render @favorite_projects
+                = render @products
               = link_to 'Loading more products', user_path(current_user, :page => @favorite_projects.next_page), :remote => true, :class => 'load-more-projects' if @favorite_projects.next_page
           #tab3.tab-pane
             %em
