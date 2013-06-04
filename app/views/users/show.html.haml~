@@ -171,6 +171,6 @@
           #tab3.tab-pane
             %em
               %h4 #{@user.name.titleize}'s friends
-                - @friends.each do |friend|
-                  = render User.where(id: friend.friend_id).first
+              - @friends.each do |friend|
+                = render User.where(id: friend.friend_id).first
 
