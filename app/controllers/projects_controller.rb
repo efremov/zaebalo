@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
     @products = Project.order("created_at desc").where(stage: 'Product').page(params[:page]).per_page(20)
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @projects }
     end
   end

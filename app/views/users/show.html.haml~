@@ -81,7 +81,7 @@
               %h4 #{@user.name.titleize}'s projects:
             .user_projects
               = render @projects 
-            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => false, :class => 'load-more-projects' if @projects.next_page
+            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
           - if @user == current_user
             #tab2.tab-pane
               %em
