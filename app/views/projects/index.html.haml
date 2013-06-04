@@ -12,13 +12,13 @@
           %h4 Products
   .tab-content
     #tab1.tab-pane.active    
-    - if @projects
       #projects
-        = render @projects
+        - if @projects
+          = render @projects
       = will_paginate @projects
     #tab2.tab-pane
-    - if @products 
-      #products      
-        = render @products
+      #products   
+        - if @products 
+          = render @products
       = will_paginate @products
 
