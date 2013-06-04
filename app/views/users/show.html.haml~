@@ -73,7 +73,8 @@
               Friends
           %li
             .btn.btn-primary
-              %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
+              - if @user == current_user 
+                %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
         .tab-content
           #tab1.tab-pane.active
             %em

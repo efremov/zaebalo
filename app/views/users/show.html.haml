@@ -72,8 +72,8 @@
             %a{"data-toggle" => "tab", :href => "#tab3"} 
               Friends
           %li
-            .btn.btn-primary
-              - if @user == current_user 
+            - if @user == current_user 
+              .btn.btn-primary
                 %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
         .tab-content
           #tab1.tab-pane.active
