@@ -9,7 +9,7 @@
   / /.span4
   .span4
     %img.img-circle{"data-src" => "holder.js/140x140"}/
-    %h2 Customers
+    %h3 Customers
     %p We are your prefered source of  information to learn about & purchase connected devices. - We enable anyone to take part in the connected revolution (funding projects).
     - if user_signed_in? and current_user.identity == nil
       %p
@@ -17,7 +17,7 @@
   / /.span4
   .span4
     %img.img-circle{"data-src" => "holder.js/140x140"}/
-    %h2 Partners
+    %h3 Partners
     %p We can help you to get in touch with inventors and help you form profitable partnerships.
     - if user_signed_in? and current_user.identity == nil
       %p

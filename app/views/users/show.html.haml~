@@ -72,16 +72,16 @@
             %a{"data-toggle" => "tab", :href => "#tab3"} 
               Friends
           %li
-            .btn.btn-primary
-              - if @user == current_user 
+            - if @user == current_user 
+              .btn.btn-primary
                 %a{:href =>"#{new_project_path}", :style => "background-color: inherit; color: inherit"} Create new project
         .tab-content
           #tab1.tab-pane.active
             %em
               %h4 #{@user.name.titleize}'s projects:
             .user_projects
-              = render @projects
-            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
+              = render @projects 
+            = link_to 'Loading more projects', user_path(current_user, :page => @projects.next_page), :remote => false, :class => 'load-more-projects' if @projects.next_page
           - if @user == current_user
             #tab2.tab-pane
               %em

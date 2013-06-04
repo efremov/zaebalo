@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) 
     @personal_info = @user.personal_info
-    @projects = @user.projects.page(params[:page]).per_page(10)
+    @projects = @user.projects.paginate(:page => params[:page]).per_page(2)
     @favorite_projects = @user.projects.page(params[:page]).per_page(10)
     @friends = @user.friends
     @trending_projects = Project.order('rate desc').page(params[:page]).per_page(10)
