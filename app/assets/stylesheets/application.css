@@ -23,7 +23,8 @@
       right: 0;
       z-index: 10;
       margin-top: 20px;
-      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+      max-width: 980px;
+      margin-bottom: -90px;/* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */    
     }
     .navbar-wrapper .navbar {
 
@@ -63,6 +64,7 @@
     /* Carousel base class */
    .carousel {
       margin-bottom: 60px;
+      max-width: 1024px;
     }
 
     .carousel .container {

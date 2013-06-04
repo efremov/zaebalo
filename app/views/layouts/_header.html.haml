@@ -10,12 +10,13 @@
           Techmakers           
           .navbar-text.pull-right
             %a.btn.btn-small.btn-primary{:href => "http://216.128.21.23/static/venturelab/form.asp", :style => " margin-top: 0px;" } Feedback
-        .nav-collapse.collapse                                                     
-          %ul.nav.pull-right
-            %li= link_to "About", about_path
-            %li= link_to "Blog", 'http://216.128.21.23/static/venturelab/blog.asp'
+        %ul.nav
+          %li= link_to "About", about_path, :class => 'pull-left'
+          %li= link_to "Blog", 'http://216.128.21.23/static/venturelab/blog.asp'    
+        .nav-collapse.collapse 
+          %ul.nav.pull-right            
             - if user_signed_in?
-              %li= link_to "Add+", new_project_path                     
+              %li= link_to "Add+", new_project_path, :style => 'color: #9FEE00;'                     
               %li= link_to "Profile", user_path(current_user)                
               %li= link_to "Sign out", destroy_user_session_path, :method => :delete
             - else

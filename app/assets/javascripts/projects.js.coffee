@@ -6,6 +6,3 @@ jQuery ->
 	$('#projects').imagesLoaded ->
 		$('#projects').masonry itemSelctor: ".box"
 
-$ ->
-  $('a.load-more-projects').bind 'inview', (e, visible) ->
-    $.getScript $(this).attr('href')
