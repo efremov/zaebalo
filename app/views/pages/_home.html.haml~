@@ -1,25 +1,25 @@
 .row
   .span4
     %img.img-circle{"data-src" => "holder.js/140x140"}/
-    %h2 Makers
+    %h3 Makers/Inventors
     %p We are your prefered partner for to bring to life their device, at all stages (from idea, team formation, to product sell) We are trustworthy, positive
-    - if user_signed_in? and current_user.identity == nill
+    - if user_signed_in? and current_user.identity == nil
       %p
         = link_to 'If you are a maker »', users_define_maker_path, :class => 'bnt'
   / /.span4
   .span4
     %img.img-circle{"data-src" => "holder.js/140x140"}/
-    %h2 Costumers
-    %p We are your prefered source of  information to learn about & purchase about connected devices. - We enable anyone to take part to the technological revolution (funding projects).
-    - if user_signed_in? and current_user.identity == nill
+    %h2 Customers
+    %p We are your prefered source of  information to learn about & purchase connected devices. - We enable anyone to take part in the connected revolution (funding projects).
+    - if user_signed_in? and current_user.identity == nil
       %p
         = link_to 'If you are end user »', users_define_user_path, :class => 'bnt'
   / /.span4
   .span4
     %img.img-circle{"data-src" => "holder.js/140x140"}/
     %h2 Partners
-    %p We can help you to get in touch with inventors and offer them your profucts
-    - if user_signed_in? and current_user.identity == nill
+    %p We can help you to get in touch with inventors and help you form profitable partnerships.
+    - if user_signed_in? and current_user.identity == nil
       %p
         = link_to 'If you a partner »', users_define_vendor_path, :class => 'bnt'
  

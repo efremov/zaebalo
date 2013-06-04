@@ -3,26 +3,12 @@
   %p.pull-right
     %a{:href => "#"} Back to top
   %p
-    \© <a href="https://venture-lab.org/venture13/teams/39872" target="_blank">The IoT Team</a> ·
-    %a{:href => "#"} Privacy
+    \© <a href="https://venture-lab.org/venture13/teams/39872" target="_blank">The Teachmakers Team</a> ·
+    %a{:href => "#"} Privacy 
     \·
-    %a{:href => "#"} Terms
-    \·
-    %a{:href => "#"} Market
-    \·
-    %a{:href => "#"} Community
-    \·
-    %a{:href => "#"} Crowdfunding 
-    \·
-    %a{:href => "#"} Prototypes
-    \·
-    %a{:href => "#"} Inventors
-    \·
-    %a{:href => "#"} Surveys 
-    \·
-    %a{:href => "#"} Ideas
-    \·
-    %a{:href => "#"} Vendors
-    \·
-    %a{:href => "#"} Projects
+    %a{:href => "#"} Terms 
+    
+  .footer
+    %small The IoT Marketplace is brought to you by <a href="https://venture-lab.org/venture13/teams/39872" target="_blank">The IoT Team</a>
+  
     
