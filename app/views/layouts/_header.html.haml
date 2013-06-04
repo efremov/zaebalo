@@ -7,11 +7,9 @@
           %span.icon-bar
           %span.icon-bar
         %a.brand{:href => root_path, :style => "background-color: transparent;"}
-          Techmakers 
-        - if current_user
-          - if current_user.name            
-            .navbar-text.pull-right
-              %a.btn.btn-small.btn-primary{:href => "#", :style => " margin-top: 0px;" } Feedback
+          Techmakers           
+          .navbar-text.pull-right
+            %a.btn.btn-small.btn-primary{:href => "http://216.128.21.23/static/venturelab/form.asp", :style => " margin-top: 0px;" } Feedback
         .nav-collapse.collapse                                                     
           %ul.nav.pull-right
             %li= link_to "About", about_path
