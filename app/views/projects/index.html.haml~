@@ -15,8 +15,8 @@
       #projects
       - if @projects
         = render @projects
-        = link_to 'Loading more projects', root_path( :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
-      = will_paginate @projects    
+        .load-more-project
+          = link_to 'Loading more projects', root_path( :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page  
     #tab2.tab-pane
       #projects
       - if @products
