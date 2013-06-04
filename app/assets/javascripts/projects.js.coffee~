@@ -7,5 +7,5 @@ jQuery ->
 		$('#projects').masonry itemSelctor: ".box"
 
 $ ->
-  $('a.load-more-projects').bind 'inview', (e, visible) ->
+  $('a.load-more-quastions').bind 'inview', (e, visible) ->
     $.getScript $(this).attr('href')

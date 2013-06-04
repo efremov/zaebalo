@@ -14,7 +14,8 @@
     #tab1.tab-pane.active
       #projects
       - if @projects
-        = @projects.first.rate
+        = render @projects
+        = link_to 'Loading more projects', root_path( :page => @projects.next_page), :remote => true, :class => 'load-more-projects' if @projects.next_page
       = will_paginate @projects    
     #tab2.tab-pane
       #projects
